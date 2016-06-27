@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
 
         // 设置TabLayout的选项卡监听, 当tablayout选中时,让viewpager选中当前的item
-        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        /*mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 mViewPager.setCurrentItem(tab.getPosition());
@@ -44,13 +44,15 @@ public class MainActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
-        });
+        });*/
 
         // 设置tab的标题
         mTabLayout.setTabsFromPagerAdapter(mAdapter);
-        TabLayout.TabLayoutOnPageChangeListener listener = new TabLayout.TabLayoutOnPageChangeListener(mTabLayout);
-        mViewPager.addOnPageChangeListener(listener);
+        // TabLayout.TabLayoutOnPageChangeListener listener = new TabLayout.TabLayoutOnPageChangeListener(mTabLayout);
+        // setAdapter应该在setupWithViewPager之前
         mViewPager.setAdapter(mAdapter);
+        // mViewPager.addOnPageChangeListener(listener);
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 
     private void initData() {
